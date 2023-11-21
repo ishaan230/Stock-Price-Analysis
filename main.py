@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -6,7 +7,7 @@ from xgboost import XGBRegressor
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 
-data = pd.read_csv("./dataset/" + sys.argv[1] + ".csv")
+data = pd.read_csv(sys.argv[1])
 
 features = [
     "Open",
@@ -48,15 +49,18 @@ plt.figure(figsize=(10, 6))
 plt.plot(
     data["Date"].iloc[-len(y_test) :],
     y_test.values,
-    label="Actual Close Price",
+    label="Actual Closing Rate",
     marker="o",
 )
 plt.plot(
-    data["Date"].iloc[-len(y_test) :], y_pred, label="Predicted Close Price", marker="o"
+    data["Date"].iloc[-len(y_test) :],
+    y_pred,
+    label="Predicted Closing Rate",
+    marker="o",
 )
 plt.legend()
-plt.title("Stock Price Prediction")
+plt.title(Path(sys.argv[1]).stem)
 plt.xlabel("Date")
-plt.ylabel("Close Price")
+plt.ylabel("Closing Rate")
 plt.xticks(rotation=45)
 plt.show()
