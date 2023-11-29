@@ -19,8 +19,8 @@ features = [
     "Volume",
     "Turnover",
     "Trades",
-    "Deliverable Volume",
-    "%Deliverble",
+    # "Deliverable Volume",
+    # "%Deliverble",
 ]
 target = "Close"
 
