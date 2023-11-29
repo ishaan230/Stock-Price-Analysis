@@ -1,7 +1,8 @@
 env
 venv
 bin/
-lib
-share
-include
+lib/
+share/
+include/
 pyvenv.cfg
+etc/
